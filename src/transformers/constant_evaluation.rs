@@ -21,9 +21,9 @@ impl VisitMut for EvaluateVisitor {
             match res {
                 swc_ecma_minifier::eval::EvalResult::Lit(lit) => match lit {
                     Lit::Bool(l) => *expr = Expr::Lit(swc_ecma_ast::Lit::Bool(l.to_owned())),
-                    // Lit::Str(l) => *expr = Expr::Lit(swc_ecma_ast::Lit::Str(l.to_owned())),
-                    // Lit::Null(l) => *expr = Expr::Lit(swc_ecma_ast::Lit::Null(l.to_owned())),
-                    // Lit::Num(l) => *expr = Expr::Lit(swc_ecma_ast::Lit::Num(l.to_owned())),
+                    Lit::Str(l) => *expr = Expr::Lit(swc_ecma_ast::Lit::Str(l.to_owned())),
+                    Lit::Null(l) => *expr = Expr::Lit(swc_ecma_ast::Lit::Null(l.to_owned())),
+                    Lit::Num(l) => *expr = Expr::Lit(swc_ecma_ast::Lit::Num(l.to_owned())),
                     _ => {}
                 },
                 eval::EvalResult::Undefined => {}
